@@ -8,6 +8,8 @@ export const createPost = async (req, res) => {
     const user = await User.findById(userId);
     const newPost = new Post({
       userId,
+      firstName: user.firstName,
+      lastName: user.lastName,
       location: user.location,
       description,
       userPicturePath: user.picturePath,
@@ -66,6 +68,18 @@ export const likePost = async (req, res) => {
 
     res.status(200).json(updatedPost);
   } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+/* DELETE */
+export const deletePost = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Post.findByIdAndRemove(id);
+    res.status(200).json({ message: "Post deleted successfully." });
+  } catch (error) {
+    console.error(error);
     res.status(404).json({ message: error.message });
   }
 };
