@@ -8,9 +8,10 @@ MERN stack social media app
 - Node.js
 - Express.js
 - MongoDB
-- Vercel
 - Material UI
 - HTML5
+- Render (server hosted on)
+- Vercel
 
 ## Run Project Locally
 
@@ -23,7 +24,7 @@ MERN stack social media app
 ## Clone or Download
 
 ```bash
-$ git clone https://github.com/Ra3L/mern_socialapp.git
+$ git clone https://github.com/Ra3L/socialapp-mern.git
 $ cd mern_socialapp
 ```
 
