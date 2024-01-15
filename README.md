@@ -35,7 +35,7 @@ It requires client and server runs concurrently in separate terminal to make it 
 ```bash
 $ cd client
 $ npm install
-$ npm run dev
+$ npm run start
 ```
 
 ### Server-side Usage
