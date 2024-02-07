@@ -1,6 +1,6 @@
-# socialapp.vercel.app
+# dribbling.vercel.app
 
-MERN stack social media app
+Full stack social media website built on MERN stack for people who love soccer and would like to know people with same passion.
 
 ## Tech stack
 
