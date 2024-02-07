@@ -57,7 +57,7 @@ const Navbar = () => {
             },
           }}
         >
-          SocialApp
+          Dribbling
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
