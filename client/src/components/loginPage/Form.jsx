@@ -8,7 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined.js";
-import { Formik } from "formik";
+import { ErrorMessage, Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -236,6 +236,11 @@ const Form = () => {
               error={Boolean(touched.password) && Boolean(errors.password)}
               helperText={touched.password && errors.password}
               sx={{ gridColumn: "span 4" }}
+            />
+            <ErrorMessage
+              component="div"
+              name="email"
+              className="invalid-feedback"
             />
           </Box>
 

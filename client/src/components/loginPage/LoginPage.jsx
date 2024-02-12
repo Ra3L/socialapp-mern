@@ -6,14 +6,8 @@ const LoginPage = () => {
   const theme = useTheme();
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   return (
-    <Box
-      style={{
-        backgroundImage: `url(${process.env.REACT_APP_API_URL}/assets/footballs.jpg)`,
-        backgroundSize: "cover",
-        height: "100vh",
-      }}
-    >
-      <Box width="100%" p="6rem 6% 1rem 6%" textAlign="center">
+    <Box>
+      <Box width="100%" p="2rem 6% 1rem 6%" textAlign="center">
         <Typography fontWeight="bold" fontSize="40px" color="primary">
           Dribbling
         </Typography>

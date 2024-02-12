@@ -10,24 +10,27 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const token = useSelector((state) => state.token);
 
   const getPosts = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
+    fetch(`${process.env.REACT_APP_API_URL}/posts`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
-    });
-    const data = await response.json();
-    dispatch(setPosts({ posts: data }));
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        data.sort((a, b) => (a.createdAt - b.createdAt ? 1 : -1));
+        dispatch(setPosts({ posts: data }));
+      });
   };
 
   const getUserPosts = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/posts/${userId}/posts`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-    const data = await response.json();
-    dispatch(setPosts({ posts: data }));
+    fetch(`${process.env.REACT_APP_API_URL}/posts/${userId}/posts`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        data.sort((a, b) => (a.createdAt - b.createdAt ? 1 : -1));
+        dispatch(setPosts({ posts: data }));
+      });
   };
 
   useEffect(() => {
