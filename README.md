@@ -24,8 +24,8 @@ Full stack social media website built on MERN stack for people who love soccer a
 ## Clone or Download
 
 ```bash
-$ git clone https://github.com/Ra3L/socialapp-mern.git
-$ cd mern_socialapp
+$ git clone https://github.com/Rha3L/dribbling.git
+$ cd dribbling
 ```
 
 It requires client and server runs concurrently in separate terminal to make it work.
