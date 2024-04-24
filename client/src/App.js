@@ -1,13 +1,15 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import { useMemo } from "react";
+import { Suspense, lazy, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 
 import { themeSettings } from "./styles/theme";
-import HomePage from "./components/homePage/HomePage.jsx";
-import LoginPage from "./components/loginPage/LoginPage.jsx";
-import ProfilePage from "./components/profilePage/ProfilePage.jsx";
+import LoadingCircular from "./components/loadingCircular/LoadingCircular.jsx";
+
+const HomePage = lazy(() => import("./pages/HomePage.jsx"));
+const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage.jsx"));
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -19,17 +21,19 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route
-              path="/home"
-              element={isAuth ? <HomePage /> : <Navigate to="/" />}
-            />
-            <Route
-              path="/profile/:userId"
-              element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
-            />
-          </Routes>
+          <Suspense fallback={<LoadingCircular />}>
+            <Routes>
+              <Route path="/" element={<LoginPage />} />
+              <Route
+                path="/home"
+                element={isAuth ? <HomePage /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/profile/:userId"
+                element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
+              />
+            </Routes>
+          </Suspense>
         </ThemeProvider>
       </BrowserRouter>
     </div>
